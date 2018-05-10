@@ -13,10 +13,7 @@
 
 Auth::routes();
 
-
-Route::group(['middleware' => 'auth'], function()
-{
   
-  Route::get('/', 'CaoUsuarioController@get');
+Route::get('/', 'CaoUsuarioController@get');
+Route::get('/getRelatorio', 'CaoUsuarioController@getRelatorio');
 
-});

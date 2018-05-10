@@ -66,44 +66,7 @@
               </div>
             </div>
         </div>
-        <div class="table-responsive" id="moneyTable" hidden>
-          <table class="table">
-              <thead>
-                <tr>
-                  <th colspan="5">gues</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th>Período</th>
-                  <th>Receita Líquida</th>
-                  <th>Custo Fixo</th>
-                  <th>Comissão</th>
-                  <th>Lucro</th>
-                </tr>
-                <tr>
-                  <th>1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>gues</td>
-                </tr>
-                <tr>
-                  <th>2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>gues</td>
-                </tr>
-                <tr>
-                  <th>3</th>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                  <td>@twitter</td>
-                  <td>gues</td>
-                </tr>
-              </tbody>
-          </table>
+        <div id="moneyTable" hidden>
         </div>
       </div>
     </section>
@@ -179,10 +142,10 @@
         "07":"Julio", "08":"Agosto", "09":"Septiembre", "10":"Octubre", "11":"Noviembre", "12":"Diciembre"};
       var userCode = data[0]["co_usuario"];
       var salary = data[0]["brut_salario"];
-      var table = '';
+      var table = '<div id="moneyTable">';
       for (var i = 0; i < data.length; i++) {
         var user = data[i];
-        table = table + '<div class="table-responsive" id="moneyTable"><table class="table"><thead><tr><th colspan="5">'+ user["no_usuario"] +'</th></tr></thead><tbody><tr><th>Período</th><th>Receita Líquida</th><th>Custo Fixo</th><th>Comissão</th><th>Lucro</th></tr>'      
+        table = table + '<div class="table-responsive"><table class="table"><thead><tr><th colspan="5">'+ user["no_usuario"] +'</th></tr></thead><tbody><tr><th>Período</th><th>Receita Líquida</th><th>Custo Fixo</th><th>Comissão</th><th>Lucro</th></tr>'      
         while ((data.length > i) && (user['co_usuario'] === userCode)) {
           var date = user['data_emissao'].slice(0, -3);
           table = table +'<tr><th>' + months[date.substr(5)] + '</th>';
@@ -206,6 +169,7 @@
         i--;
         table = table +'</tr></tbody></table></div>'
       }
+      table = table + '</div>';
       $("#moneyTable").replaceWith(table);
     }
 
